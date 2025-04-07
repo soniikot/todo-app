@@ -29,14 +29,13 @@
               "src/favicon.ico",
               "src/assets"
             ],
-         "styles": [
-    "node_modules/material-design-icons/iconfont/material-icons.css",
-    "node_modules/materialize-css/dist/css/materialize.min.css",
-    "src/styles.css"
-],
-      "scripts": [
-    "node_modules/materialize-css/dist/js/materialize.min.js"
-],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/materialize-css/dist/js/materialize.min.js"
+            ]
+          },
           "configurations": {
             "production": {
               "budgets": [
@@ -97,11 +96,19 @@
             ],
             "scripts": []
           }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "todo-app:serve"
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "packageManager": "npm"
   }
 }

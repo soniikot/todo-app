@@ -1,18 +1,28 @@
-<h1>TO DO APP</h1>
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <label>
-    Add  your todo
-  </label>
-  <input type="text"/>
-<button type="submit">Submit</button>
+
+<div class="container">
+  <h1>TO DO APP</h1>
+  <hr>
+
+<form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <input type="text" name="title"id="title" ngModel/>
+<button class="button" type="submit">Add your TO  DO</button>
 </form>
+
+
+<div *ngIf="!todoList?.length" >
+  Your Todo List is Empty!
+</div>
+
+
 
 <div>
   <ul>
-    <li *ngFor="let todo of todoList; let i = index">
-      {{ i + 1 }}. {{ todo.title }} -
-      <button (click)="onComplete(todo.id)">Complete</button>
-      <button (click)="onDelete(todo.id)">Delete</button>
+    <li class="list-item" *ngFor="let todo of todoList; let i = index">
+      <input name="toggle" type="checkbox" [checked]="todo.isDone" (change)="toggleComplete(todo.id)" />
+     <span [class.completed]="todo.isDone">  {{ todo.title }} </span>
+      <button class="button" (click)="onDelete(todo.id)">Delete</button>
     </li>
   </ul>
+</div>
+<div><random-quote></random-quote></div>
 </div>

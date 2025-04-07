@@ -9,7 +9,11 @@ import {Todo} from "../models/todo.model";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-todoList: Todo []  =[]
+  todoList: Todo[] = [
+    { id: Guid.create(), title: 'Learn Angular', isDone: false },
+    { id: Guid.create(), title: 'Build a To-Do App', isDone: true },
+    { id: Guid.create(), title: 'Profit!', isDone: false }
+  ];
 
 onSubmit  (form:NgForm){
   const todo = new Todo (Guid.create(),   form.value.title,   false);
@@ -17,9 +21,13 @@ onSubmit  (form:NgForm){
   form.resetForm();
 }
 
-onComplete (id:Guid){
-  const todo = this.todoList.find(item=>item.id ===id);
-  todo ? todo.isDone = true : console.error("Something wrong") ;
+toggleComplete(id: Guid) {
+  this.todoList = this.todoList.map(todo => {
+    if (todo.id === id) {
+      return { ...todo, isDone: !todo.isDone };
+    }
+    return todo;
+  });
 }
 
 onDelete(id: Guid) {
