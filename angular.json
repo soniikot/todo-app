@@ -29,11 +29,14 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
-          },
+         "styles": [
+    "node_modules/material-design-icons/iconfont/material-icons.css",
+    "node_modules/materialize-css/dist/css/materialize.min.css",
+    "src/styles.css"
+],
+      "scripts": [
+    "node_modules/materialize-css/dist/js/materialize.min.js"
+],
           "configurations": {
             "production": {
               "budgets": [
